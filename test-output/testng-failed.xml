@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [AutomationPracticeSuite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="MainTest4(failed)">
+    <classes>
+      <class name="com.pages.model.CreateNewAccountPage">
+        <methods>
+          <include name="createNewAccountPageTest"/>
+        </methods>
+      </class> <!-- com.pages.model.CreateNewAccountPage -->
+    </classes>
+  </test> <!-- MainTest4(failed) -->
+</suite> <!-- Failed suite [AutomationPracticeSuite] -->
