@@ -1,20 +1,19 @@
 package com.pages.test;
-import org.openqa.selenium.WebDriver;
+
 import org.testng.annotations.Test;
 
-import com.pages.model.BasePage;
 import com.pages.model.HomePage;
 import com.pages.model.LoginPage;
 
-@Test
-public class MainTest extends BasePage{
+public class MainTest extends BaseTest {
 
-	public MainTest(WebDriver dr) {
-		super(dr);
-		HomePage homepage = new HomePage(driver);
+	@Test
+	public void test() {
+		HomePage homepage = new HomePage(basePage.driver);
 		homepage.clickSignIn();
-		LoginPage login = new LoginPage(driver);
+		LoginPage login = new LoginPage(basePage.driver);
 		login.clickCreateNewAccount();
+
 	}
-	
+
 }

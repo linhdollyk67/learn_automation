@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [AutomationPracticeSuite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="MainTest4(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <test thread-count="5" name="Test(failed)">
+    <parameter name="browser" value="Chrome"/>
     <classes>
-      <class name="com.pages.model.CreateNewAccountPage">
+      <class name="com.pages.test.MainTest">
         <methods>
-          <include name="createNewAccountPageTest"/>
+          <include name="openBrowser"/>
+          <include name="closeBrowser"/>
+          <include name="test"/>
         </methods>
-      </class> <!-- com.pages.model.CreateNewAccountPage -->
+      </class> <!-- com.pages.test.MainTest -->
     </classes>
-  </test> <!-- MainTest4(failed) -->
-</suite> <!-- Failed suite [AutomationPracticeSuite] -->
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

@@ -1,45 +1,36 @@
 package com.pages.test;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
+import com.pages.model.TestPage;
 
-public class BaseTest {
-	public WebDriver driver;
-	@Parameters({ "browser"})
-	@BeforeMethod(alwaysRun = true)
-	private void beforeTest(@Optional("Chrome") String browser) {
-		switch (browser) {
-			case "Chrome":
-				System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-				driver = new ChromeDriver();
-				break;
-			case "Edge":
-				System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
-				driver = new EdgeDriver();
-				break;
-			case "FireFox":
-				System.setProperty("webdriver.msedge.driver", "src/main/resources/msedgedriver.exe");
-				driver = new FirefoxDriver();
-				break;
-			default:
-				System.out.println("Don't know how to start " + browser + "so start by Chrome");
-				System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-				driver = new ChromeDriver();
-				break;
-		}
+public class BaseTest extends TestPage {
+	TestPage basePage;
+
+	public BaseTest() {
+		super();
+		basePage = new TestPage();
+	}
+
+	public BaseTest(WebDriver dr) {
+		basePage.driver = dr;
+	}
+
+	@BeforeMethod
+	// Parameter will get browser from testng.xml on which browser test to run
+	@Parameters("browser")
+	public void openBrowser(String browser) {
+		System.out.println(browser);
+		basePage.beforeTest("Chrome");
+	}
+
+	@AfterMethod
+	void closeBrowser() {
+		basePage.driver.manage().deleteAllCookies();
+		basePage.afterTest();
 	}
 	
-	@AfterMethod
-	private void afterTest() {
-		driver.close();
-	}
-
 }
-
